@@ -38,7 +38,7 @@ public class Product extends BaseEntity{
 
 
     public Product(Long id, String name, Category category, String content, double price, MultipartFile image, String imagePath) {
-//        super(id, createdAt, updatedAt, deletedAt);
+
         super();
         this.name = name;
         this.category = category;

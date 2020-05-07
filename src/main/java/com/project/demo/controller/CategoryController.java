@@ -40,7 +40,6 @@ public class CategoryController {
                                      @RequestParam(name = "p", defaultValue = "1") int page){
         page = (page<=0) ? 1 : page;
         Pageable pageable = PageRequest.of(page-1, 5);
-      // List<Category> categories = categoryService.allCategories();
         Page<Category> categories = categoryService.allCategories(pageable);
         model.addAttribute("categories", categories);
         return "moderator/categoriesList";

@@ -47,29 +47,19 @@ public class ProductController {
         List<Category> categoryList = categoryService.allCategories();
         model.addAttribute("categoryList", categoryList);
 
-//        Map<Long, String> categoryMap = new HashMap<>();//Mozhno bylo cherez map otpravit, no listom mense koda
-//        for(Category c : categoryList){
-//            categoryMap.put(c.getId(), c.getName());
-//        }
-//        model.addAttribute("categoryMap", categoryMap);
-
-
         return "moderator/addProduct";
     }
-    //////
+
 
 
     @GetMapping(value = "/pageProductsList")
-//    @PreAuthorize("hasRole('ROLE_MODERATOR')")
     public String pageProductsList(ModelMap model,
                                    @RequestParam(name = "p", defaultValue = "1") int page) {
         page = (page <= 0) ? 1 : page;
         Pageable pageable = PageRequest.of(page - 1, 10);
 
-//        List<Product> products = productService.allProducts();//pomenial na pageable
         Page<Product> products = productService.allProducts(pageable);
-//        int size = products.getTotalPages();
-//        int num = products.getNumber();
+
         model.addAttribute("products", products);
 
         return "moderator/productsList";

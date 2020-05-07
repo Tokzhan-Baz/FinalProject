@@ -51,9 +51,7 @@ public class MainController {
         return "anonymous/category";
     }
 
-//    @GetMapping(value = "")
-//    {}
-    @PostMapping(value = "/register")//Users registration
+    @PostMapping(value = "/register")
     public String register(@RequestParam(name = "email") String email,
                            @RequestParam(name = "password") String password,
                            @RequestParam(name = "re-password") String re_password,
@@ -68,7 +66,6 @@ public class MainController {
 
     @GetMapping(value = "/adminProfile")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-//    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     public String profile(ModelMap model){
 
         List<Users> allUsers = userService.getAllUsers();
